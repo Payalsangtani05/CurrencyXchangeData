@@ -11,7 +11,7 @@ namespace CurrencyXchange.Service
 		{
 			_context = context;
 		}
-
+	 
 		public async Task<Dictionary<string, Dictionary<string, decimal>>> GetProfitLossAnalyticsAsync(DateTime startDate)
 		{
 			var transactions = await _context.Transactions
