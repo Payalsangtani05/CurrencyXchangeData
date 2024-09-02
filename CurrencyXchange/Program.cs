@@ -28,6 +28,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>()
 	.AddDefaultTokenProviders();
 builder.Services.AddScoped<AnalyticsService>(); // Register the AnalyticsService
+builder.Services.AddScoped<PasswordHasher>();
+ 
+string key = "aP!v@b0$1GxO1vH7uDkE2y4Q6r8tW9zT";
+string iv = "16-char-init-vec";
+
+builder.Services.AddSingleton(new EncyprtDecryptService(key, iv));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
  .AddJwtBearer(options =>
  {
